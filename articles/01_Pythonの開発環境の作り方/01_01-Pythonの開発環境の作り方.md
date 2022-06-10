@@ -33,4 +33,7 @@ poetry install
 
 ## Jupyter Notebook の起動方法
 以下のコマンドでJupyter Notebookを起動できます。
+```
+make jupyter
+```
 `./notebooks/`以下の各ノートブックを開いてコードを動かしながら機械学習モデルについて学ぶ記事を書く予定です。
