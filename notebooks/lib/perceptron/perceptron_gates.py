@@ -43,9 +43,34 @@ class PerceptronGates:
 
 class VisualizePerceptron: 
     def __init__(self):
-        perceptron_gates = PerceptronGates()
+        self.perceptron_gates = PerceptronGates()
+        self.lattice_points_x, self.lattice_points_y = np.meshgrid(np.arange(2), np.arange(2))
     
     def visualize_and_gate(self):
+        # make x1 (hotizontal) array
+        horizontal_min, horizontal_max, horizontal_step = -0.5, 1.75, 0.1        
+        x1 = np.arange(horizontal_min, horizontal_max, horizontal_step)
         
+        # calculate slope and intercept
+        slope = -(self.perceptron_gates.weights_and_gate[0] / self.perceptron_gates.weights_and_gate[0])
+        intercept = -(self.perceptron_gates.bias_and_gate / self.perceptron_gates.weights_and_gate[0])
+        
+        # make x2 (vertical) array
+        x2 = slope * x1 + intercept
+        
+        # equalise the aspect ratio
+        plt.axes().set_aspect('equal')
+        
+        # show axes
+        plt.axhline(0, linewidth=2, color="gray")
+        plt.axvline(0, linewidth=2, color="gray")
+        
+        # set horizontal/verticallimits
+        plt.xlim([-0.25, 1.5])
+        plt.ylim([-0.25, 1.5])
+        
+        plt.plot(x1, x2)
+        plt.scatter(self.lattice_points_x, self.lattice_points_y)
+        plt.show()
         
         return
